@@ -25,7 +25,7 @@ class MessageHandlerImpl implements MessageHandler {
  
     @Override
     void data(InputStream data) {
-        log.info "DATA"          
+        log.info "DATA: ${data.getText()}"
     }
  
     @Override
