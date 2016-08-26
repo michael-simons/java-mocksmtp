@@ -5,18 +5,9 @@ import groovy.util.logging.*
 import org.subethamail.smtp.*
 import org.subethamail.smtp.server.*
 
-class MessageHandlerFactoryImpl implements MessageHandlerFactory {
-    @Override
-    MessageHandler create(MessageContext ctx) {
-            return new MessageHandlerImpl(ctx)
-        }
-}
-
 @Log
 class MessageHandlerImpl implements MessageHandler {
     MessageContext context
- 
-    MessageHandlerImpl() {}
  
     MessageHandlerImpl(MessageContext context) {
         this.context = context
@@ -43,7 +34,7 @@ class MessageHandlerImpl implements MessageHandler {
     }
 }
 
-SMTPServer smtpServer  = new SMTPServer(new MessageHandlerFactoryImpl())
+SMTPServer smtpServer  = new SMTPServer({ctx -> new  MessageHandlerImpl(ctx)})
  
 smtpServer.hostName = 'localhost'
 smtpServer.port = 25000
