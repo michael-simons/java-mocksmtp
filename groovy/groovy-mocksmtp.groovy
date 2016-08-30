@@ -1,12 +1,12 @@
 @Grab('org.slf4j:slf4j-simple:1.7.21') 
 @Grab('org.subethamail:subethasmtp:3.1.7')
 
-import groovy.util.logging.Log
+import groovy.util.logging.Slf4j
 import org.subethamail.smtp.MessageContext
 import org.subethamail.smtp.MessageHandler
 import org.subethamail.smtp.server.SMTPServer
 
-@Log
+@Slf4j
 class MessageHandlerImpl implements MessageHandler {
     MessageContext context
  
